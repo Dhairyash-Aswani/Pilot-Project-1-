@@ -1,45 +1,21 @@
-import Layout from './Layout';   // or '../Layout' if in different folders
+import React from 'react';
+import Sidebar from '../components/Sidebar';
+import Topbar from '../components/Topbar';
+import DashboardCards from '../components/DashboardCards';
 
-function Dashboard() {
-  const user = JSON.parse(localStorage.getItem('user')) || { name: 'User' };
-
-  const cards = [
-    { title: 'Default Dashboard' },
-    { title: 'Administration' },
-    { title: 'My Aircraft' },
-    { title: 'My Resources' },
-    { title: 'My Financials' },
-    { title: 'Analytics' },
-  ];
-
+const Dashboard = () => {
   return (
-    <Layout>
-      <h1 className="text-2xl font-bold mb-6">
-        Hello, {user.name}!
-      </h1>
-
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-        {cards.map((card, index) => (
-          <div
-            key={index}
-            className="bg-white p-6 rounded-xl shadow-md text-center hover:scale-105 transition-transform"
-          >
-            {card.title}
-          </div>
-        ))}
-
-        <div className="bg-white p-6 rounded-xl shadow-md text-center">
-          <div className="text-3xl font-bold">13,105</div>
-          <div className="mt-2">My Materials</div>
-        </div>
-
-        <div className="bg-white p-6 rounded-xl shadow-md text-center">
-          <div className="text-3xl font-bold">13,105</div>
-          <div className="mt-2">Total Spends</div>
-        </div>
+    <div className="flex h-screen bg-gray-100">
+      <Sidebar />
+      <div className="flex flex-col flex-grow">
+        <Topbar />
+        <main className="p-6">
+          <h2 className="text-2xl font-semibold mb-4">Hello! User.</h2>
+          <DashboardCards />
+        </main>
       </div>
-    </Layout>
+    </div>
   );
-}
+};
 
 export default Dashboard;
