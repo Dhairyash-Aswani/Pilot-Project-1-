@@ -22,6 +22,7 @@ function Login() {
   };
 
   return (
+  <div className="center-wrapper">
     <div className="container" id="container">
       <div className="form-container sign-in-container">
         <form onSubmit={handleLogin}>
@@ -59,7 +60,9 @@ function Login() {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default Login;

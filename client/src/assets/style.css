@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
 	box-sizing: border-box;
@@ -250,3 +250,12 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+.center-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f5f7; /* Optional, same as body */
+}
+

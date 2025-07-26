@@ -1,18 +1,11 @@
-/** @type {import('tailwindcss').Config} */
+// client/tailwind.config.js
 export default {
   content: [
     './index.html',
-    './src/**/*.{js,jsx,ts,tsx}', // include TypeScript if used in future
+    './src/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: '#FF4B2B', // custom brand red
-      },
-      spacing: {
-        64: '16rem', // used for sidebar width
-      },
-    },
+    extend: {},
   },
   plugins: [],
-}
+};
