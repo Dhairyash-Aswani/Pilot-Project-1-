@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx'; // <- make sure .jsx extension is used if App is a JSX file
-import './assets/style.css';
+import App from './App.jsx';
+import './assets/style.css'; // Make sure Tailwind is imported in this file
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

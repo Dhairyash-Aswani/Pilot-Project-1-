@@ -1,20 +1,19 @@
-import Sidebar from './Sidebar';   // adjust the path if needed
-import Topbar from './Topbar';     // adjust the path if needed
+import React from 'react';
+import Sidebar from './Sidebar';
+import Topbar from './Topbar';
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex">
-      {/* Sidebar - fixed on left */}
+    <div className="min-h-screen">
+      {/* Sidebar: Fixed to the left */}
       <Sidebar />
 
-      {/* Right section - Topbar and Page Content */}
-      <div className="flex flex-col flex-1 bg-gray-100 min-h-screen ml-64">
-        <Topbar />
+      {/* Topbar: Fixed to top but offset right of sidebar */}
+      <Topbar />
 
-        {/* Page Content */}
-        <main className="p-6">
-          {children}
-        </main>
+      {/* Main Content */}
+      <div className="pt-16 pl-64 bg-gray-100 min-h-screen p-6">
+        {children}
       </div>
     </div>
   );
