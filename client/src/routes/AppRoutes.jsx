@@ -9,16 +9,23 @@ import Layout from '../components/Layout';
 const AppRoutes = () => {
   return (
     <Routes>
+      {/* Public Routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+
+      {/* Protected Routes wrapped in Layout */}
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <Layout>
+              <Dashboard />
+            </Layout>
           </ProtectedRoute>
         }
       />
+
+      {/* Catch-all */}
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );
