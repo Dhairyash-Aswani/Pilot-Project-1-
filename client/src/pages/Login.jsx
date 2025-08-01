@@ -15,6 +15,7 @@ function Login() {
       const res = await login({ email, password });
       localStorage.setItem('token', res.token);
       localStorage.setItem('user', JSON.stringify(res.user));
+      console.log('Token stored:', localStorage.getItem('token'));
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Login failed');

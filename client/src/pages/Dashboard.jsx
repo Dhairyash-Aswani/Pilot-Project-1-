@@ -20,7 +20,7 @@ const Dashboard = () => {
     {
       title: "My Aircraft",
       icon: <FaPlane size={36} className="text-green-500" />,
-      onClick: () => navigate("/MyAircraft"), // 👈 Add this
+      route: "/my-aircraft", // 👈 define the route here
     },
     { title: "My Materials", icon: <FaWarehouse size={36} className="text-orange-500" /> },
     { title: "My Resources", icon: <FaUsers size={36} className="text-pink-500" /> },
@@ -28,6 +28,10 @@ const Dashboard = () => {
     { title: "Analytics", icon: <FaChartBar size={36} className="text-teal-500" /> },
     { title: "Chat", icon: <FaComments size={36} className="text-red-500" /> },
   ];
+
+  const handleCardClick = (route) => {
+    if (route) navigate(route);
+  };
 
   return (
     <div className="p-8">
@@ -37,8 +41,8 @@ const Dashboard = () => {
         {menuItems.map((item, index) => (
           <div
             key={index}
-            onClick={item.onClick} // 👈 apply click handler if available
-            className="bg-white rounded-xl shadow-md px-6 py-10 flex flex-col items-center justify-center text-center hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
+            onClick={() => handleCardClick(item.route)} // ✅ only clickable if `route` exists
+            className={`bg-white rounded-xl shadow-md px-6 py-10 flex flex-col items-center justify-center text-center hover:shadow-xl hover:scale-105 transition-all duration-300 ${item.route ? 'cursor-pointer' : ''}`}
           >
             <div className="mb-4">{item.icon}</div>
             <div className="text-lg font-semibold text-gray-800">
