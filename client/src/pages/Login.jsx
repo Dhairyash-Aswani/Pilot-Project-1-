@@ -1,5 +1,5 @@
+import '../assets/auth.css';
 import React, { useState } from 'react';
-import '../assets/style.css';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/authService';
 
@@ -22,47 +22,52 @@ function Login() {
   };
 
   return (
-  <div className="center-wrapper">
-    <div className="container" id="container">
-      <div className="form-container sign-in-container">
-        <form onSubmit={handleLogin}>
-          <h1>Sign in</h1>
-          <span>or use your account</span>
-          {error && <p className="error">{error}</p>}
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <a href="#">Forgot your password?</a>
-          <button type="submit">Sign In</button>
-        </form>
-      </div>
+    <div className="auth-page">
+      <div className="center-wrapper">
+        <div className="container" id="container">
+          <div className="form-container sign-in-container">
+            <form onSubmit={handleLogin}>
+              <h1>Sign in</h1>
+              <span>or use your account</span>
+              {error && <p className="error">{error}</p>}
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <a href="#">Forgot your password?</a>
+              <button type="submit">Sign In</button>
+            </form>
+          </div>
 
-      <div className="overlay-container">
-        <div className="overlay">
-          <div className="overlay-panel overlay-right">
-            <h1>Welcome!</h1>
-            <p>Enter your personal details and start your experience</p>
-            <button className="ghost" onClick={() => navigate('/signup')}>
-              Sign Up
-            </button>
+          <div className="overlay-container">
+            <div className="overlay">
+              <div className="overlay-panel overlay-right">
+                <h1>Welcome!</h1>
+                <p>Enter your personal details and start your experience</p>
+                <button
+                  type="button"
+                  className="ghost"
+                  onClick={() => navigate('/signup')}
+                >
+                  Sign Up
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-);
-
+  );
 }
 
 export default Login;

@@ -5,7 +5,10 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';     // ✅ your Login page
 import Signup from './pages/Signup';   // ✅ your Signup page
 
+
+
 function App() {
+
   return (
     <Router>
       <Routes>

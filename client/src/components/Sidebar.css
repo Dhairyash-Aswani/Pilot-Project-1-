@@ -1,0 +1,19 @@
+/* Sidebar.css */
+
+.sidebar {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-link {
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+  max-width: 140px;
+  height: auto;
+  object-fit: contain;
+}
