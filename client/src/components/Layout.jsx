@@ -1,25 +1,25 @@
-import React from 'react';
-import Sidebar from './Sidebar';
-import Topbar from './Topbar';
+import React from "react";
+import Sidebar from "./Sidebar";
+import Topbar from "./Topbar";
 
 const Layout = ({ children }) => {
   return (
-    <div className="grid grid-cols-[16rem_1fr] grid-rows-[4rem_1fr] h-screen">
-      
-      {/* Sidebar (first column, spans both rows) */}
-      <div className="row-span-2 col-span-1 bg-white shadow-md z-20">
-        <Sidebar />
-      </div>
+    <div style={{ display: "flex" }}>
+      {/* Fixed Sidebar */}
+      <Sidebar />
 
-      {/* Topbar (top row, second column) */}
-      <div className="col-span-1 row-span-1 z-10">
-        <Topbar />
-      </div>
+      {/* Main Content */}
+      <div style={{ marginLeft: "13rem", flex: 1, height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+        {/* Topbar */}
+        <div style={{ flexShrink: 0 }}>
+          <Topbar />
+        </div>
 
-      {/* Main Content (bottom row, second column) */}
-      <main className="bg-gray-100 p-6 overflow-y-auto col-span-1 row-span-1">
-        {children}
-      </main>
+        {/* Scrollable Content */}
+        <main style={{ flex: 1, overflowY: "auto", backgroundColor: "#f6f5f7", padding: "1.5rem" }}>
+          {children}
+        </main>
+      </div>
     </div>
   );
 };

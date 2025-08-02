@@ -9,32 +9,44 @@ import {
   FaChartBar,
   FaComments,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import "../assets/style.css"; // 👈 Link to your CSS
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const menuItems = [
-    { title: "Default Dashboard", icon: <FaTachometerAlt size={26} /> },
-    { title: "Administration", icon: <FaUserShield size={26} /> },
-    { title: "My Aircraft", icon: <FaPlane size={26} /> },
-    { title: "My Materials", icon: <FaWarehouse size={26} /> },
-    { title: "My Resources", icon: <FaUsers size={26} /> },
-    { title: "My Financials", icon: <FaCreditCard size={26} /> },
-    { title: "Analytics", icon: <FaChartBar size={26} /> },
-    { title: "Chat", icon: <FaComments size={26} /> },
+    { title: "Default Dashboard", icon: <FaTachometerAlt size={40} className="text-blue-500" /> },
+    { title: "Administration", icon: <FaUserShield size={40} className="text-purple-500" /> },
+    {
+      title: "My Aircraft",
+      icon: <FaPlane size={40} className="text-green-500" />,
+      route: "/my-aircraft",
+    },
+    { title: "My Materials", icon: <FaWarehouse size={40} className="text-orange-500" /> },
+    { title: "My Resources", icon: <FaUsers size={40} className="text-pink-500" /> },
+    { title: "My Financials", icon: <FaCreditCard size={40} className="text-yellow-500" /> },
+    { title: "Analytics", icon: <FaChartBar size={40} className="text-teal-500" /> },
+    { title: "Chat", icon: <FaComments size={40} className="text-red-500" /> },
   ];
 
+  const handleCardClick = (route) => {
+    if (route) navigate(route);
+  };
+
   return (
-    <div className="max-w-screen-xl mx-auto p-4">
-      <h2 className="text-3xl font-bold mb-8 text-gray-800">Hello! User.</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="dashboard-container">
+      <h2 className="dashboard-heading">Hello! User.</h2>
+
+      <div className="dashboard-grid">
         {menuItems.map((item, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center hover:shadow-xl hover:scale-105 transition-all duration-300"
+            onClick={() => handleCardClick(item.route)}
+            className={`dashboard-card ${item.route ? "clickable" : ""}`}
           >
-            <div className="text-red-500">{item.icon}</div>
-            <div className="mt-4 text-base font-semibold text-gray-700">
-              {item.title}
-            </div>
+            <div className="dashboard-icon">{item.icon}</div>
+            <div className="dashboard-title">{item.title}</div>
           </div>
         ))}
       </div>
