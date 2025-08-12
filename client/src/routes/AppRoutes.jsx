@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Dashboard from '../pages/Dashboard';
 import MyAircraft from '../pages/MyAircraft'; // ✅ Component name stays PascalCase
+import AircraftDetails from '../pages/AircraftDetails';
 import ProtectedRoute from './ProtectedRoute';
 import Layout from '../components/Layout';
 
@@ -32,6 +33,17 @@ const AppRoutes = () => {
           <ProtectedRoute>
             <Layout>
               <MyAircraft />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/aircraft-details" // ✅ Changed to kebab-case
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <AircraftDetails />
             </Layout>
           </ProtectedRoute>
         }
