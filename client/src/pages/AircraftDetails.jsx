@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import "../assets/style.css";
+import aircraftImg from "../assets/aircraft.png";
 
-const AircraftDetail = () => {
-  const { id } = useParams(); // You can fetch specific aircraft data here
+const AircraftDetails = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("General Info");
 
   const tabs = [
@@ -15,105 +19,126 @@ const AircraftDetail = () => {
   ];
 
   return (
-    <div className="p-6 mt-[4rem]">
-      {/* Tabs */}
-      <div className="flex gap-6 border-b border-gray-300 mb-6 overflow-x-auto">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`pb-2 text-sm font-medium whitespace-nowrap ${
-              activeTab === tab
-                ? "border-b-2 border-red-500 text-red-500"
-                : "text-gray-600 hover:text-red-500"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
+    <div className="aircraft-details-page detail-container">
+      {/* Header with Back Button */}
+      <div className="flex items-center gap-3 mb-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="text-gray-700 hover:text-red-500"
+        >
+          <FaArrowLeft size={18} />
+        </button>
+        <h2 className="text-lg font-semibold text-left">Aircraft AC-PLZ</h2>
       </div>
 
-      {/* Main Info Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        {/* Image Section */}
-        <div className="bg-white shadow rounded-lg p-4 flex flex-col items-center">
+      {/* Tabs */}
+      <div className="bg-white rounded-md shadow-sm mb-4">
+        <div className="flex gap-6 px-6 border-b border-gray-200">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`py-3 px-2 text-sm font-medium border-b-2 transition-colors ${
+                activeTab === tab
+                  ? "text-red-600 border-red-600"
+                  : "text-gray-600 border-transparent hover:text-red-500"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* MAIN: 3-column grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+        {/* LEFT: Image */}
+        <div className="md:col-span-1 bg-white shadow-md rounded-xl p-6 flex flex-col items-start">
           <img
-            src="../assets/aircraft.png"
+            src={aircraftImg}
             alt="Aircraft"
-            className="rounded-lg w-full object-cover"
+            className="aircraft-image rounded-md"
+            style={{ marginLeft: 0, marginRight: "auto" }}
           />
-          <button className="mt-3 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded text-sm">
-            Upload Image
-          </button>
+          <button className="secondary-btn mt-3 self-start">Update Image</button>
         </div>
 
-        {/* Info Card */}
-        <div className="bg-white shadow rounded-lg p-4">
-          <div className="grid grid-cols-2 gap-y-3 text-sm">
+        {/* RIGHT: Info */}
+        <div className="md:col-span-2 bg-white shadow-md rounded-xl p-6">
+          <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-sm">
             <p>
-              <span className="font-medium">Tail Number:</span> AC-PLZ
+              <span className="text-gray-500">Tail Number:</span>{" "}
+              <span className="font-medium text-gray-900">AC-PLZ</span>
             </p>
             <p>
-              <span className="font-medium">Induction Date:</span> 12/02/23
+              <span className="text-gray-500">Induction Date:</span>{" "}
+              <span className="font-medium text-gray-900">10/28/23</span>
             </p>
             <p>
-              <span className="font-medium">MSN Number:</span> 2654
+              <span className="text-gray-500">MSN Number:</span>{" "}
+              <span className="font-medium text-gray-900">2654</span>
             </p>
             <p>
-              <span className="font-medium">Aircraft Hours:</span> 52629
+              <span className="text-gray-500">Aircraft Hours:</span>{" "}
+              <span className="font-medium text-gray-900">52787</span>
             </p>
             <p>
-              <span className="font-medium">Model:</span> A320-214
+              <span className="text-gray-500">Model:</span>{" "}
+              <span className="font-medium text-gray-900">A320-214</span>
             </p>
             <p>
-              <span className="font-medium">Aircraft Cycles:</span> 34823
+              <span className="text-gray-500">Aircraft Cycles:</span>{" "}
+              <span className="font-medium text-gray-900">32623</span>
             </p>
             <p>
-              <span className="font-medium">Manufacture Date:</span> 01/05/05
+              <span className="text-gray-500">Manufacture Date:</span>{" "}
+              <span className="font-medium text-gray-900">1/1/06</span>
             </p>
           </div>
         </div>
       </div>
 
       {/* Engine Information */}
-      <div className="bg-white shadow rounded-lg p-4">
-        <h3 className="font-medium mb-3">Engine Information</h3>
-        <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-          <thead className="bg-gray-100">
-            <tr>
-              {[
-                "Position",
-                "Part Number",
-                "Serial Number",
-                "TSN",
-                "CSN",
-                "TSO",
-                "CSO",
-              ].map((header) => (
-                <th
-                  key={header}
-                  className="px-3 py-2 text-left font-normal text-gray-700"
-                >
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-t border-gray-200">
-              <td className="px-3 py-2">Engine 1</td>
-              <td className="px-3 py-2">CFM56-5B4/P</td>
-              <td className="px-3 py-2">123456</td>
-              <td className="px-3 py-2">28300</td>
-              <td className="px-3 py-2">2160</td>
-              <td className="px-3 py-2">800</td>
-              <td className="px-3 py-2">50</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="bg-white shadow-md rounded-xl p-6">
+        <h3 className="font-medium mb-4">Engine Information</h3>
+        <div className="rounded-lg border border-gray-200 overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-100">
+              <tr>
+                {[
+                  "Position",
+                  "Part Number",
+                  "Serial Number",
+                  "TSN",
+                  "CSN",
+                  "TSR",
+                  "CSR",
+                ].map((header) => (
+                  <th
+                    key={header}
+                    className="px-3 py-2 text-left font-medium text-gray-700"
+                  >
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              <tr className="hover:bg-gray-50">
+                <td className="px-3 py-2">Engine RH</td>
+                <td className="px-3 py-2">CFM56-5B4/P</td>
+                <td className="px-3 py-2">5774860</td>
+                <td className="px-3 py-2">4579256</td>
+                <td className="px-3 py-2">28100</td>
+                <td className="px-3 py-2">0.0</td>
+                <td className="px-3 py-2">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
 };
 
-export default AircraftDetail;
+export default AircraftDetails;
