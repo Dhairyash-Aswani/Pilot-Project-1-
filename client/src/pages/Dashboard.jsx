@@ -16,8 +16,16 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const menuItems = [
-    { title: "Default Dashboard", icon: <FaTachometerAlt size={40} className="text-blue-500" /> },
-    { title: "Administration", icon: <FaUserShield size={40} className="text-purple-500" /> },
+    {
+      title: "Default Dashboard",
+      icon: <FaTachometerAlt size={40} className="text-blue-500" />,
+      route: "/default-dashboard",
+    },
+    {
+      title: "Administration",
+      icon: <FaUserShield size={40} className="text-purple-500" />,
+      route: "/administration",
+    },
     {
       title: "My Aircraft",
       icon: <FaPlane size={40} className="text-green-500" />,
@@ -26,7 +34,11 @@ const Dashboard = () => {
     { title: "My Materials", icon: <FaWarehouse size={40} className="text-orange-500" /> },
     { title: "My Resources", icon: <FaUsers size={40} className="text-pink-500" /> },
     { title: "My Financials", icon: <FaCreditCard size={40} className="text-yellow-500" /> },
-    { title: "Analytics", icon: <FaChartBar size={40} className="text-teal-500" /> },
+    {
+      title: "Analytics",
+      icon: <FaChartBar size={40} className="text-teal-500" />,
+      route: "/analytics",   // ✅ Added route
+    },
     { title: "Chat", icon: <FaComments size={40} className="text-red-500" /> },
   ];
 

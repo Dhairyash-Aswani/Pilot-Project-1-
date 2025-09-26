@@ -3,8 +3,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Dashboard from '../pages/Dashboard';
-import MyAircraft from '../pages/MyAircraft'; // ✅ Component name stays PascalCase
+import DefaultDashboard from '../pages/DefaultDashboard';
+import MyAircraft from '../pages/MyAircraft';
 import AircraftDetails from '../pages/AircraftDetails';
+import Administration from '../pages/Administration';
+import Analytics from '../pages/Analytics';
 import ProtectedRoute from './ProtectedRoute';
 import Layout from '../components/Layout';
 
@@ -28,7 +31,18 @@ const AppRoutes = () => {
       />
 
       <Route
-        path="/my-aircraft" // ✅ Changed to kebab-case
+        path="/default-dashboard" // ✅ Added route
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <DefaultDashboard />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/my-aircraft"
         element={
           <ProtectedRoute>
             <Layout>
@@ -39,11 +53,33 @@ const AppRoutes = () => {
       />
 
       <Route
-        path="/aircraft-details" // ✅ Changed to kebab-case
+        path="/aircraft-details"
         element={
           <ProtectedRoute>
             <Layout>
               <AircraftDetails />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/administration"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Administration />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/analytics"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Analytics />
             </Layout>
           </ProtectedRoute>
         }

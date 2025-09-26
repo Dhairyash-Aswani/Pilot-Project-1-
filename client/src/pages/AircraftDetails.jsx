@@ -20,15 +20,15 @@ const AircraftDetails = () => {
 
   return (
     <div className="aircraft-details-page detail-container">
-      {/* Header with Back Button */}
-      <div className="flex items-center gap-3 mb-4">
+      {/* ✅ Header Bar with Gray Background */}
+      <div className="aircraft-header-bar">
         <button
           onClick={() => navigate(-1)}
           className="text-gray-700 hover:text-red-500"
         >
           <FaArrowLeft size={18} />
         </button>
-        <h2 className="text-lg font-semibold text-left">Aircraft AC-PLZ</h2>
+        <h2 className="text-lg font-semibold">Aircraft AC-PLZ</h2>
       </div>
 
       {/* Tabs */}
@@ -50,22 +50,23 @@ const AircraftDetails = () => {
         </div>
       </div>
 
-      {/* MAIN: 3-column grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+      {/* MAIN: image left + info right */}
+      <div className="flex flex-col md:flex-row gap-6 my-6 items-start">
         {/* LEFT: Image */}
-        <div className="md:col-span-1 bg-white shadow-md rounded-xl p-6 flex flex-col items-start">
+        <div className="bg-white shadow-md rounded-xl p-6 flex flex-col items-start md:w-1/3">
           <img
             src={aircraftImg}
             alt="Aircraft"
-            className="aircraft-image rounded-md"
-            style={{ marginLeft: 0, marginRight: "auto" }}
+            className="aircraft-image rounded-md self-start"
           />
-          <button className="secondary-btn mt-3 self-start">Update Image</button>
+          <button className="secondary-btn mt-3 self-start">
+            Update Image
+          </button>
         </div>
 
         {/* RIGHT: Info */}
-        <div className="md:col-span-2 bg-white shadow-md rounded-xl p-6">
-          <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-sm">
+        <div className="bg-white shadow-md rounded-xl p-6 flex-1 md:ml-8">
+          <div className="grid grid-cols-2 gap-y-6 gap-x-12 text-sm">
             <p>
               <span className="text-gray-500">Tail Number:</span>{" "}
               <span className="font-medium text-gray-900">AC-PLZ</span>
@@ -90,7 +91,7 @@ const AircraftDetails = () => {
               <span className="text-gray-500">Aircraft Cycles:</span>{" "}
               <span className="font-medium text-gray-900">32623</span>
             </p>
-            <p>
+            <p className="col-span-2">
               <span className="text-gray-500">Manufacture Date:</span>{" "}
               <span className="font-medium text-gray-900">1/1/06</span>
             </p>

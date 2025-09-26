@@ -548,16 +548,15 @@ footer a {
 } */
 
 .aircraft-image {
-  max-width: 250px;   /* consistent width */
-  max-height: 160px;  /* consistent height */
-  width: 100%;        /* scale down inside max box */
-  height: auto;       /* keep aspect ratio */
+  max-width: 250px;
+  max-height: 160px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
   border-radius: 8px;
   display: block;
   margin: 0 auto;
 }
-
 
 .aircraft-detail-page .container {
   all: unset; /* Prevent global .container rules from breaking layout */
@@ -579,26 +578,29 @@ footer a {
   margin: 0 auto;
 }
 
-/* === Aircraft Detail Page Container (fixed) === */
+/* === Aircraft Detail Page Container === */
 .detail-container {
-  padding: 5rem 2rem 2rem 0; /* ⬅ no extra left padding */
-  background-color: #f5f5f5;
+  padding: 2rem 0.5rem 0.5rem 0.5rem;   /* ⬅ removed top padding */
+  background-color: #f8f8f8;   /* match figma light bg */
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-/* ensure aircraft image in detail pages is left-aligned inside its card */
-.detail-container .aircraft-image {
-  margin-left: 0;
-  margin-right: auto;
-  display: block;
+/* === Aircraft Header Bar === */
+.aircraft-header-bar {
+  background-color: #D9D9D9;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  /* stretch full width across content (cancel container padding) */
+  margin: 0 -2rem 1rem -2rem;
+  width: calc(100% + 4rem);
+
+  box-sizing: border-box;
 }
 
-.layout.aircraft-details {
-  --sidebar-gap: 4px;
-}
-/* Aircraft Details page only */
-.aircraft-details-page {
-  --sidebar-gap: 4px; /* tiny breathing room */
-}
+
+
 
