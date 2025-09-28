@@ -1,79 +1,150 @@
-// client/src/pages/MyAircraft.jsx
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MyAircraft = () => {
-  return (
-    <div className="p-6">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-gray-800">Data Table</h2>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-          + Add Aircraft
-        </button>
-      </div>
+  const [expandedRow, setExpandedRow] = useState(null);
+  const navigate = useNavigate();
 
+  const toggleRow = (rowIndex) => {
+    setExpandedRow(expandedRow === rowIndex ? null : rowIndex);
+  };
+
+  const handleModuleClick = (route) => {
+    if (route) navigate(route);
+  };
+
+  const moduleButtons = [
+    { label: "Attachments", icon: "📎" },
+    { label: "A/C Detail", icon: "🛩️", route: "/aircraft-details" },
+    { label: "Configuration", icon: "⚙️" },
+    { label: "Maintenance Tasks", icon: "⏱️" },
+    { label: "Aircraft Defects", icon: "⚠️" },
+    { label: "TechLog Configuration", icon: "📝" },
+    { label: "TechLog", icon: "🛠️" },
+    { label: "Aircraft Flights", icon: "✈️" },
+    { label: "Daily Utilization", icon: "📊" },
+    { label: "Check Work Pack", icon: "📋" },
+    { label: "Aircraft Account", icon: "💳" },
+    { label: "Oil Uplifts Setup", icon: "🛢️" },
+  ];
+
+  return (
+    <div className="pt-6 pl-6 pr-6 mt-[4rem]">
       {/* Table */}
-      <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
-        <table className="min-w-full text-sm text-left text-gray-700">
-          <thead className="text-xs text-white uppercase bg-[#FF4B2B]">
+      <div className="overflow-x-auto bg-white shadow rounded-lg">
+        <table className="w-full text-sm text-center text-gray-800 border-separate border-spacing-0">
+          <thead className="bg-[#FF4B2B] text-white">
             <tr>
               <th className="px-3 py-3">
                 <input type="checkbox" />
               </th>
-              <th className="px-3 py-3">Tail Number</th>
-              <th className="px-3 py-3">MSN Number</th>
-              <th className="px-3 py-3">Model</th>
-              <th className="px-3 py-3">Maintenance Program / Revision</th>
-              <th className="px-3 py-3">Base</th>
-              <th className="px-3 py-3">Flight Hours</th>
-              <th className="px-3 py-3">Flight Cycles</th>
-              <th className="px-3 py-3">APU Hours</th>
-              <th className="px-3 py-3">APU Cycles</th>
-              <th className="px-3 py-3">Status</th>
-              <th className="px-3 py-3">System Serviceability</th>
-              <th className="px-3 py-3">Actions</th>
+              {[
+                "Tail Number",
+                "MSN Number",
+                "Model",
+                "Maintenance Program / Revision",
+                "Base",
+                "Flight Hours",
+                "Flight Cycles",
+                "APU Hours",
+                "APU Cycles",
+                "Status",
+                "System Serviceability",
+                "Actions",
+              ].map((h) => (
+                <th
+                  key={h}
+                  className="px-3 py-3 font-normal uppercase text-xs text-center"
+                >
+                  {h}
+                </th>
+              ))}
             </tr>
           </thead>
-          <tbody>
+
+          <tbody className="divide-y divide-gray-100">
             {[...Array(10)].map((_, i) => (
-              <tr key={i} className="border-b hover:bg-gray-100">
-                <td className="px-3 py-3">
-                  <input type="checkbox" />
-                </td>
-                <td className="px-3 py-3">AC-PLZ</td>
-                <td className="px-3 py-3">2654</td>
-                <td className="px-3 py-3">A320-214</td>
-                <td className="px-3 py-3">A320-214 | S5I, 12</td>
-                <td className="px-3 py-3">Base X</td>
-                <td className="px-3 py-3">52787:28</td>
-                <td className="px-3 py-3">32623</td>
-                <td className="px-3 py-3">23517:00</td>
-                <td className="px-3 py-3">24588</td>
-                <td className="px-3 py-3 text-green-600">Serviceable</td>
-                <td className="px-3 py-3 text-red-600">Unserviceable</td>
-                <td className="px-3 py-3 space-x-2">
-                  <button className="text-blue-600 hover:underline">✏️</button>
-                  <button className="text-red-600 hover:underline">🗑️</button>
-                </td>
-              </tr>
+              <React.Fragment key={i}>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-3 py-3">
+                    <input type="checkbox" />
+                  </td>
+                  <td>AC-PLZ</td>
+                  <td>2654</td>
+                  <td>A320-214</td>
+                  <td>A320-214 | S5I, 12</td>
+                  <td>Base X</td>
+                  <td>52787:28</td>
+                  <td>32623</td>
+                  <td>23517:00</td>
+                  <td>24588</td>
+                  <td className="uppercase text-green-600 font-semibold">
+                    Serviceable
+                  </td>
+                  <td className="uppercase text-red-600 font-semibold">
+                    Unserviceable
+                  </td>
+                  <td className="px-4 py-3">
+                    <div className="flex items-center gap-3 justify-end">
+                      {/* Expand/Collapse Button */}
+                      <button
+                        title="Expand"
+                        onClick={() => toggleRow(i)}
+                        className="text-gray-600 hover:text-black"
+                      >
+                        {expandedRow === i ? "▲" : "▼"}
+                      </button>
+
+                      {/* Edit */}
+                      <button className="text-gray-600 hover:text-blue-600">
+                        ✏️
+                      </button>
+
+                      {/* Delete */}
+                      <button className="text-gray-600 hover:text-red-600">
+                        🗑️
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                {/* Expanded Row */}
+                {expandedRow === i && (
+                  <tr>
+                    <td colSpan={13} className="bg-gray-50 p-6">
+                      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        {moduleButtons.map((btn, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => handleModuleClick(btn.route)}
+                            className="flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-3 rounded-md text-sm w-full justify-start"
+                          >
+                            <span>{btn.icon}</span> {btn.label}
+                          </button>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
             ))}
           </tbody>
         </table>
+      </div>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between px-4 py-3 text-sm text-gray-600 border-t">
-          <span>1–10 of 97</span>
-          <div className="flex items-center gap-2">
-            <span>Rows per page: </span>
-            <select className="border rounded px-2 py-1 text-sm">
-              <option>10</option>
-              <option>20</option>
-              <option>50</option>
-            </select>
-            <span className="ml-4">1/10</span>
-            <button className="px-2">◀️</button>
-            <button className="px-2">▶️</button>
-          </div>
+      {/* Pagination */}
+      <div className="flex justify-between items-center text-sm text-gray-600 mt-4">
+        <span>1–10 of 97</span>
+        <div className="flex items-center gap-2">
+          <span>Rows per page:</span>
+          <select className="border px-2 py-1 rounded text-sm">
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+          </select>
+          <span className="ml-4">1/10</span>
+          <button className="px-2">◀️</button>
+          <button className="px-2">▶️</button>
         </div>
       </div>
     </div>

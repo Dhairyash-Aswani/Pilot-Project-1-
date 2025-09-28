@@ -3,6 +3,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* :root {
+  --sidebar-width: 13rem;
+  --sidebar-gap: 4px; breathing room */
+/* } */
+
+.layout {
+  --sidebar-width: 13rem;   /* Default width */
+  --sidebar-gap: 0px;       /* Default gap */
+  display: flex;
+}
+
 
 * {
 	box-sizing: border-box;
@@ -44,7 +55,7 @@ a {
 	margin: 15px 0;
 }
 
-button {
+/* button {
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
 	background-color: #FF4B2B;
@@ -68,7 +79,52 @@ button:focus {
 button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
+} */
+
+/* --- LOGIN PAGE BUTTON STYLES --- */
+.login-btn {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
 }
+
+.login-btn:active {
+	transform: scale(0.95);
+}
+
+.login-btn:focus {
+	outline: none;
+}
+
+.login-btn.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+/* MyAircraft icon buttons - overrides global button styles */
+.icon-button {
+  all: unset; /* removes all inherited button styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-button svg {
+  width: 25px; /* bigger icon */
+  height: 25px;
+}
+.icon-button:hover {
+  color: #2563eb; /* blue on hover - adjust as needed */
+}
+
 
 form {
 	background-color: #FFFFFF;
@@ -259,3 +315,288 @@ footer a {
   background: #f6f5f7; /* Optional, same as body */
 }
 
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 2s linear infinite;
+}
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.85; }
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 1.5s ease-in-out infinite;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 13rem; /* fixed width */
+  background-color: #FF4B2B;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  padding-top: 1rem; /* only vertical padding */
+  box-sizing: border-box; /* ensures width stays 13rem */
+}
+
+.sidebar-top {
+  padding: 0; /* ❌ remove horizontal padding */
+}
+
+.sidebar-logo {
+  max-width: 150px;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.sidebar-links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0; /* ❌ remove horizontal padding */
+  overflow-y: auto;
+}
+
+.sidebar-bottom {
+  padding: 0 0 1rem 0; /* ❌ remove horizontal padding, keep bottom */
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Now links get their own padding */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5rem 1rem; /* ✅ horizontal padding here only */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  font-weight: 500;
+  color: white;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 🔥 Active Link Styling */
+.sidebar-link.active {
+  background-color: rgba(0, 0, 0, 0.2); /* subtle black overlay */
+  color: white;
+  border-left: 4px solid white; /* optional white indicator bar */
+  padding-left: calc(1rem - 4px); /* keep text aligned after border */
+}
+
+.sidebar-link.active .sidebar-icon {
+  color: white;
+}
+
+.sidebar-icon {
+  font-size: 1rem;
+}
+
+.sidebar-text {
+  font-size: 0.875rem;
+}
+
+.blur {
+  filter: blur(2px);
+}
+
+
+/* === Dashboard styles === */
+.dashboard-container {
+  padding: 40px 60px 60px 240px; /* left padding adjusted for sidebar */
+  padding-top: 5rem; /* For topbar spacing */
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.dashboard-heading {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #1f2937; /* Tailwind's text-gray-800 */
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.dashboard-card {
+  background-color: white;
+  padding: 50px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card.clickable {
+  cursor: pointer;
+}
+
+.dashboard-icon {
+  margin-bottom: 16px;
+}
+
+.dashboard-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+
+
+/* ===== Topbar Styling ===== */
+
+.topbar-wrapper {
+  background-color: #FF4B2B;
+  height: 4rem;
+  width: calc(133% - 30rem); /* Adjust based on sidebar width */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+}
+
+.topbar-left-space {
+  width: 16rem; /* Optional for spacing balance */
+}
+
+.topbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar-title {
+  background-color: white;
+  border-radius: 9999px;
+  padding: 10px 32px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: black;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.topbar-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.search-input {
+  padding: 10px 12px 10px 36px;
+  border-radius: 6px;
+  border: none;
+  background-color: white;
+  font-size: 0.9rem;
+  width: 16rem;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* === Aircraft Detail Page Fixes === */
+/* Aircraft Detail Page Fix - Prevent global img from stretching */
+/* .aircraft-detail-page img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 260px !important;
+  max-height: 180px !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+} */
+
+.aircraft-image {
+  max-width: 250px;
+  max-height: 160px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+.aircraft-detail-page .container {
+  all: unset; /* Prevent global .container rules from breaking layout */
+}
+
+/* Ensure equal width for image + info card */
+.aircraft-detail-page .grid > div {
+  flex: 1;
+}
+
+/* Fix aircraft image shape */
+.aircraft-detail-page .aircraft-image {
+  width: auto !important;
+  height: auto !important;
+  max-width: 260px !important;
+  max-height: 180px !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* === Aircraft Detail Page Container === */
+.detail-container {
+  padding: 2rem 0.5rem 0.5rem 0.5rem;   /* ⬅ removed top padding */
+  background-color: #f8f8f8;   /* match figma light bg */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* === Aircraft Header Bar === */
+.aircraft-header-bar {
+  background-color: #D9D9D9;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  /* stretch full width across content (cancel container padding) */
+  margin: 0 -2rem 1rem -2rem;
+  width: calc(100% + 4rem);
+
+  box-sizing: border-box;
+}
