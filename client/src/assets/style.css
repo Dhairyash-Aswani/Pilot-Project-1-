@@ -1,3 +1,4 @@
+/*client/src/assets/style.css*/
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 @tailwind base;
@@ -555,7 +556,7 @@ footer a {
   object-fit: contain;
   border-radius: 8px;
   display: block;
-  margin: 0 auto;
+  margin: 0; /* ✅ stop centering */
 }
 
 .aircraft-detail-page .container {
@@ -600,7 +601,4 @@ footer a {
 
   box-sizing: border-box;
 }
-
-
-
 

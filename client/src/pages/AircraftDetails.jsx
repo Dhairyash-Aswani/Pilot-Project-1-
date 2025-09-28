@@ -1,26 +1,48 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
-import "../assets/style.css";
-import aircraftImg from "../assets/aircraft.png";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
+
+// Import the new reusable components
+import AircraftInfoCard from '../components/AircraftInfoCard';
+import EngineInfoTable from '../components/EngineInfoTable';
+
+// Data is now separated from the component logic
+const aircraftData = {
+  'Tail Number': 'AC-PLZ',
+  'Induction Date': '10/28/23',
+  'MSN Number': '2654',
+  'Aircraft Hours': '52787',
+  'Model': 'A320-214',
+  'Aircraft Cycles': '32623',
+  'Manufacture Date': '1/1/06',
+};
+
+const engineData = [
+  { 
+    position: 'Engine RH', 
+    partNumber: 'CFM56-5B4/P', 
+    serialNumber: '5774860', 
+    tsn: '4579256', 
+    csn: '28100', 
+    tsr: '0.0', 
+    csr: '0' 
+  },
+  // Add another engine here and the table will update automatically
+  // { position: 'Engine LH', partNumber: '...', serialNumber: '...', ... },
+];
 
 const AircraftDetails = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("General Info");
+  const [activeTab, setActiveTab] = useState('General Info');
 
   const tabs = [
-    "General Info",
-    "Aircraft Detail",
-    "Operational Details",
-    "Maintenance History",
-    "Weight And Balance",
-    "Cabin Configuration",
+    'General Info', 'Aircraft Detail', 'Operational Details',
+    'Maintenance History', 'Weight And Balance', 'Cabin Configuration',
   ];
 
   return (
     <div className="aircraft-details-page detail-container">
-      {/* ✅ Header Bar with Gray Background */}
+      {/* Header Bar remains the same */}
       <div className="aircraft-header-bar">
         <button
           onClick={() => navigate(-1)}
@@ -31,112 +53,35 @@ const AircraftDetails = () => {
         <h2 className="text-lg font-semibold">Aircraft AC-PLZ</h2>
       </div>
 
-      {/* Tabs */}
-      <div className="bg-white rounded-md shadow-sm mb-4">
-        <div className="flex gap-6 px-6 border-b border-gray-200">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`py-3 px-2 text-sm font-medium border-b-2 transition-colors ${
-                activeTab === tab
-                  ? "text-red-600 border-red-600"
-                  : "text-gray-600 border-transparent hover:text-red-500"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* MAIN: image left + info right */}
-      <div className="flex flex-col md:flex-row gap-6 my-6 items-start">
-        {/* LEFT: Image */}
-        <div className="bg-white shadow-md rounded-xl p-6 flex flex-col items-start md:w-1/3">
-          <img
-            src={aircraftImg}
-            alt="Aircraft"
-            className="aircraft-image rounded-md self-start"
-          />
-          <button className="secondary-btn mt-3 self-start">
-            Update Image
+      {/* Tabs - Now cleaner without the extra card background */}
+      <div className="flex gap-6 px-1 border-b border-gray-200 mb-6">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`py-3 px-2 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === tab
+                ? 'text-red-600 border-red-600'
+                : 'text-gray-600 border-transparent hover:text-red-500'
+            }`}
+          >
+            {tab}
           </button>
-        </div>
-
-        {/* RIGHT: Info */}
-        <div className="bg-white shadow-md rounded-xl p-6 flex-1 md:ml-8">
-          <div className="grid grid-cols-2 gap-y-6 gap-x-12 text-sm">
-            <p>
-              <span className="text-gray-500">Tail Number:</span>{" "}
-              <span className="font-medium text-gray-900">AC-PLZ</span>
-            </p>
-            <p>
-              <span className="text-gray-500">Induction Date:</span>{" "}
-              <span className="font-medium text-gray-900">10/28/23</span>
-            </p>
-            <p>
-              <span className="text-gray-500">MSN Number:</span>{" "}
-              <span className="font-medium text-gray-900">2654</span>
-            </p>
-            <p>
-              <span className="text-gray-500">Aircraft Hours:</span>{" "}
-              <span className="font-medium text-gray-900">52787</span>
-            </p>
-            <p>
-              <span className="text-gray-500">Model:</span>{" "}
-              <span className="font-medium text-gray-900">A320-214</span>
-            </p>
-            <p>
-              <span className="text-gray-500">Aircraft Cycles:</span>{" "}
-              <span className="font-medium text-gray-900">32623</span>
-            </p>
-            <p className="col-span-2">
-              <span className="text-gray-500">Manufacture Date:</span>{" "}
-              <span className="font-medium text-gray-900">1/1/06</span>
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
 
-      {/* Engine Information */}
-      <div className="bg-white shadow-md rounded-xl p-6">
-        <h3 className="font-medium mb-4">Engine Information</h3>
-        <div className="rounded-lg border border-gray-200 overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-gray-100">
-              <tr>
-                {[
-                  "Position",
-                  "Part Number",
-                  "Serial Number",
-                  "TSN",
-                  "CSN",
-                  "TSR",
-                  "CSR",
-                ].map((header) => (
-                  <th
-                    key={header}
-                    className="px-3 py-2 text-left font-medium text-gray-700"
-                  >
-                    {header}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200">
-              <tr className="hover:bg-gray-50">
-                <td className="px-3 py-2">Engine RH</td>
-                <td className="px-3 py-2">CFM56-5B4/P</td>
-                <td className="px-3 py-2">5774860</td>
-                <td className="px-3 py-2">4579256</td>
-                <td className="px-3 py-2">28100</td>
-                <td className="px-3 py-2">0.0</td>
-                <td className="px-3 py-2">0</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      {/* Conditional Content based on active tab */}
+      <div>
+        {activeTab === 'General Info' && (
+          <div className="space-y-6">
+            <AircraftInfoCard data={aircraftData} />
+            <EngineInfoTable data={engineData} />
+          </div>
+        )}
+        {/* You can add content for other tabs here */}
+        {activeTab === 'Aircraft Detail' && (
+          <div className="bg-white rounded-xl shadow-md p-6">More details coming soon...</div>
+        )}
       </div>
     </div>
   );
