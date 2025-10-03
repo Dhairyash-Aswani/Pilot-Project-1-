@@ -548,15 +548,16 @@ footer a {
 } */
 
 .aircraft-image {
-  max-width: 250px;
-  max-height: 160px;
-  width: 100%;
-  height: auto;
+  max-width: 250px;   /* consistent width */
+  max-height: 160px;  /* consistent height */
+  width: 100%;        /* scale down inside max box */
+  height: auto;       /* keep aspect ratio */
   object-fit: contain;
   border-radius: 8px;
   display: block;
   margin: 0 auto;
 }
+
 
 .aircraft-detail-page .container {
   all: unset; /* Prevent global .container rules from breaking layout */
@@ -578,29 +579,182 @@ footer a {
   margin: 0 auto;
 }
 
-/* === Aircraft Detail Page Container === */
+/* === Aircraft Detail Page Container (fixed) === */
 .detail-container {
-  padding: 2rem 0.5rem 0.5rem 0.5rem;   /* ⬅ removed top padding */
-  background-color: #f8f8f8;   /* match figma light bg */
+  padding: 5rem 2rem 2rem 0; /* ⬅ no extra left padding */
+  background-color: #f5f5f5;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-/* === Aircraft Header Bar === */
-.aircraft-header-bar {
-  background-color: #D9D9D9;
-  padding: 0.75rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+/* ensure aircraft image in detail pages is left-aligned inside its card */
+.detail-container .aircraft-image {
+  margin-left: 0;
+  margin-right: auto;
+  display: block;
+}
 
-  /* stretch full width across content (cancel container padding) */
-  margin: 0 -2rem 1rem -2rem;
-  width: calc(100% + 4rem);
+.layout.aircraft-details {
+  --sidebar-gap: 4px;
+}
+/* Aircraft Details page only */
+.aircraft-details-page {
+  --sidebar-gap: 4px; /* tiny breathing room */
+}
 
+.defaulltdashboard-container {
+  padding: 40px 60px 60px 240px; /* left padding adjusted for sidebar */
+  padding-top: 5rem; /* For topbar spacing */
+  background-color: #f5f5f5;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
+.defaultdashboard-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
 
+.defaultdashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
 
+.defaultdashboard-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
 
+.defaultdashboard-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.defaultdashboard-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.defaultdashboard-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+}
+
+.defaultdashboard-count {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2b6cb0;
+}
+
+.analytics-container {
+  padding: 20px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.analytics-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.analytics-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.analytics-card h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.small-card {
+  text-align: center;
+}
+
+.kpi {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #777;
+}
+/* =================================== */
+/* ===== CAMO ANALYTICS DASHBOARD STYLES ===== */
+/* =================================== */
+
+.analytics-dashboard {
+  padding: 24px;
+  font-family: sans-serif;
+  color: #333;
+  background-color: #f7fafc;
+}
+
+.analytics-dashboard .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.analytics-dashboard .stat-card,
+.analytics-dashboard .chart-container,
+.analytics-dashboard .table-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.analytics-dashboard .stat-card h3,
+.analytics-dashboard .chart-container h3,
+.analytics-dashboard .table-container h3 {
+  font-size: 16px;
+  color: #4a5568;
+  margin: 0 0 12px 0;
+}
+
+.analytics-dashboard .stat-card .value {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.analytics-dashboard .grid-col-span-2 {
+  grid-column: span 2;
+}
+
+.analytics-dashboard .grid-col-span-4 {
+  grid-column: span 4;
+}
+
+.analytics-dashboard .defects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.analytics-dashboard .defects-table th,
+.analytics-dashboard .defects-table td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
