@@ -1,4 +1,6 @@
+// Sidebar.jsx
 import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaPlane,
@@ -9,14 +11,21 @@ import {
   FaHeadset,
   FaCog,
   FaSignOutAlt,
+  FaUsers,
+  FaShieldAlt,
+  FaKey,
+  FaChartBar,
+  FaWarehouse,
+  FaUserShield,
+  FaCreditCard,
+  FaComments,
 } from "react-icons/fa";
-import { useNavigate, useLocation } from "react-router-dom";
 import LoadingLogo from "./LoadingLogo";
 import logo from "../assets/logo.png";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Get current route
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogout = () => {
@@ -28,14 +37,41 @@ const Sidebar = () => {
     }, 1000);
   };
 
-  const links = [
-    { label: "Dashboard", icon: <FaTachometerAlt />, path: "/dashboard" },
-    { label: "Flights Details", icon: <FaPlane />, path: "/flights" },
-    { label: "Feedback", icon: <FaComment />, path: "/feedback" },
-    { label: "Fairs", icon: <FaMoneyBill />, path: "/fairs" },
-    { label: "Baggage Details", icon: <FaSuitcase />, path: "/baggage" },
-    { label: "AI Assistance", icon: <FaRobot />, path: "/ai" },
-  ];
+  // 🔥 Different menus for different sections
+  const menus = {
+    dashboard: [
+      { label: "Dashboard", icon: <FaTachometerAlt />, path: "/dashboard" },
+      { label: "Flights Details", icon: <FaPlane />, path: "/flights" },
+      { label: "Feedback", icon: <FaComment />, path: "/feedback" },
+      { label: "Fairs", icon: <FaMoneyBill />, path: "/fairs" },
+      { label: "Baggage Details", icon: <FaSuitcase />, path: "/baggage" },
+      { label: "AI Assistance", icon: <FaRobot />, path: "/ai" },
+    ],
+
+    myAircraft: [
+      { label: "Dashboard", icon: <FaTachometerAlt />, path: "/dashboard" },
+      { label: "Administration", icon: <FaUserShield />, path: "/administration" },
+      { label: "My Aircraft", icon: <FaPlane />, path: "/my-aircraft" },
+      { label: "My Materials", icon: <FaWarehouse />, path: "/my-materials" },
+      { label: "My Resources", icon: <FaUsers />, path: "/my-resources" },
+      { label: "My Financials", icon: <FaCreditCard />, path: "/my-financials" },
+      { label: "Analytics", icon: <FaChartBar />, path: "/analytics" },
+      { label: "Chat", icon: <FaComments />, path: "/chat" },
+    ],
+
+    administration: [
+      { label: "Users", icon: <FaUsers />, path: "/administration/users" },
+      { label: "Roles", icon: <FaShieldAlt />, path: "/administration/roles" },
+      { label: "Permissions", icon: <FaKey />, path: "/administration/permissions" },
+    ],
+  };
+
+  // 🔎 Select menu based on current path
+  let currentMenu = "dashboard"; // default
+  if (location.pathname.startsWith("/my-aircraft")) currentMenu = "myAircraft";
+  if (location.pathname.startsWith("/administration")) currentMenu = "administration";
+
+  const links = menus[currentMenu];
 
   const bottomLinks = [
     { label: "Support", icon: <FaHeadset />, path: "/support" },

@@ -603,3 +603,161 @@ footer a {
 
   box-sizing: border-box;
 }
+
+
+.defaulltdashboard-container {
+  padding: 40px 60px 60px 240px; /* left padding adjusted for sidebar */
+  padding-top: 5rem; /* For topbar spacing */
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.defaultdashboard-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.defaultdashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.defaultdashboard-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.defaultdashboard-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.defaultdashboard-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.defaultdashboard-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+}
+
+.defaultdashboard-count {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2b6cb0;
+}
+
+.analytics-container {
+  padding: 20px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.analytics-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.analytics-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.analytics-card h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.small-card {
+  text-align: center;
+}
+
+.kpi {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #777;
+}
+/* =================================== */
+/* ===== CAMO ANALYTICS DASHBOARD STYLES ===== */
+/* =================================== */
+
+.analytics-dashboard {
+  padding: 24px;
+  font-family: sans-serif;
+  color: #333;
+  background-color: #f7fafc;
+}
+
+.analytics-dashboard .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.analytics-dashboard .stat-card,
+.analytics-dashboard .chart-container,
+.analytics-dashboard .table-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.analytics-dashboard .stat-card h3,
+.analytics-dashboard .chart-container h3,
+.analytics-dashboard .table-container h3 {
+  font-size: 16px;
+  color: #4a5568;
+  margin: 0 0 12px 0;
+}
+
+.analytics-dashboard .stat-card .value {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.analytics-dashboard .grid-col-span-2 {
+  grid-column: span 2;
+}
+
+.analytics-dashboard .grid-col-span-4 {
+  grid-column: span 4;
+}
+
+.analytics-dashboard .defects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.analytics-dashboard .defects-table th,
+.analytics-dashboard .defects-table td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
