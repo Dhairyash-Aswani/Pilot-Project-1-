@@ -1,11 +1,7 @@
 import React from 'react';
 
-// The headers are defined once
-const tableHeaders = [
-  'Position', 'Part Number', 'Serial Number', 'TSN', 'CSN', 'TSR', 'CSR'
-];
+const tableHeaders = ['Position', 'Part Number', 'Serial Number', 'TSN', 'CSN', 'TSR', 'CSR'];
 
-// This component receives an array of engine data as a prop
 const EngineInfoTable = ({ data }) => {
   return (
     <div className="bg-white shadow-md rounded-xl p-6">
@@ -22,7 +18,6 @@ const EngineInfoTable = ({ data }) => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {/* The table body is now dynamically rendered from the data array */}
             {data.map((engine) => (
               <tr key={engine.serialNumber} className="hover:bg-gray-50">
                 <td className="px-4 py-3">{engine.position}</td>

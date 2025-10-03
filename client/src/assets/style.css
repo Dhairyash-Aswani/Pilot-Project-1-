@@ -1,18 +1,22 @@
-/*client/src/assets/style.css*/
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* :root {
+  --sidebar-width: 13rem;
+  --sidebar-gap: 4px; breathing room */
+/* } */
 
 .layout {
-  --sidebar-width: 13rem;
-  --sidebar-gap: 0px;
+  --sidebar-width: 13rem;   /* Default width */
+  --sidebar-gap: 0px;       /* Default gap */
   display: flex;
 }
 
+
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
@@ -22,64 +26,91 @@ body {
   padding: 0;
 }
 
+
 h1 {
-  font-weight: bold;
-  margin: 0;
+	font-weight: bold;
+	margin: 0;
 }
 
 h2 {
-  text-align: center;
+	text-align: center;
 }
 
 p {
-  font-size: 14px;
-  font-weight: 100;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  margin: 20px 0 30px;
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
 }
 
 span {
-  font-size: 12px;
+	font-size: 12px;
 }
 
 a {
-  color: #333;
-  font-size: 14px;
-  text-decoration: none;
-  margin: 15px 0;
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
 }
+
+/* button {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+} */
 
 /* --- LOGIN PAGE BUTTON STYLES --- */
 .login-btn {
-  border-radius: 20px;
-  border: 1px solid #FF4B2B;
-  background-color: #FF4B2B;
-  color: #FFFFFF;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 45px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: transform 80ms ease-in;
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
 }
 
 .login-btn:active {
-  transform: scale(0.95);
+	transform: scale(0.95);
 }
 
 .login-btn:focus {
-  outline: none;
+	outline: none;
 }
 
 .login-btn.ghost {
-  background-color: transparent;
-  border-color: #FFFFFF;
+	background-color: transparent;
+	border-color: #FFFFFF;
 }
 
 /* MyAircraft icon buttons - overrides global button styles */
 .icon-button {
-  all: unset;
+  all: unset; /* removes all inherited button styles */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -87,193 +118,196 @@ a {
 }
 
 .icon-button svg {
-  width: 25px;
+  width: 25px; /* bigger icon */
   height: 25px;
 }
 .icon-button:hover {
-  color: #2563eb;
+  color: #2563eb; /* blue on hover - adjust as needed */
 }
 
 
 form {
-  background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
 }
 
 input {
-  background-color: #eee;
-  border: none;
-  padding: 12px 15px;
-  margin: 8px 0;
-  width: 100%;
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
 }
 
 .container {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-    0 10px 10px rgba(0,0,0,0.22);
+              0 10px 10px rgba(0,0,0,0.22);
   position: relative;
   overflow: hidden;
-  width: 768px;
-  max-width: 100%;
+  
+  width: 90%;        /* 🔥 responsive width */
+  max-width: 900px;  /* set a reasonable max */
   min-height: 480px;
+  display: flex;
 }
 
+
 .form-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
 }
 
 .sign-in-container {
-  left: 0;
-  width: 50%;
-  z-index: 2;
+	left: 0;
+	width: 50%;
+	z-index: 2;
 }
 
 .container.right-panel-active .sign-in-container {
-  transform: translateX(100%);
+	transform: translateX(100%);
 }
 
 .sign-up-container {
-  left: 0;
-  width: 50%;
-  opacity: 0;
-  z-index: 1;
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
 }
 
 .container.right-panel-active .sign-up-container {
-  transform: translateX(100%);
-  opacity: 1;
-  z-index: 5;
-  animation: show 0.6s;
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
 }
 
 @keyframes show {
-  0%, 49.99% {
-    opacity: 0;
-    z-index: 1;
-  }
-  
-  50%, 100% {
-    opacity: 1;
-    z-index: 5;
-  }
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
 }
 
 .overlay-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  transition: transform 0.6s ease-in-out;
-  z-index: 100;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
 }
 
 .container.right-panel-active .overlay-container{
-  transform: translateX(-100%);
+	transform: translateX(-100%);
 }
 
 .overlay {
-  background: #FF416C;
-  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-  background: linear-gradient(to right, #FF4B2B, #FF416C);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  color: #FFFFFF;
-  position: relative;
-  left: -100%;
-  height: 100%;
-  width: 200%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+	background: #FF416C;
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
 }
 
 .container.right-panel-active .overlay {
-  transform: translateX(50%);
+  	transform: translateX(50%);
 }
 
 .overlay-panel {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 40px;
-  text-align: center;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
 }
 
 .overlay-left {
-  transform: translateX(-20%);
+	transform: translateX(-20%);
 }
 
 .container.right-panel-active .overlay-left {
-  transform: translateX(0);
+	transform: translateX(0);
 }
 
 .overlay-right {
-  right: 0;
-  transform: translateX(0);
+	right: 0;
+	transform: translateX(0);
 }
 
 .container.right-panel-active .overlay-right {
-  transform: translateX(20%);
+	transform: translateX(20%);
 }
 
 .social-container {
-  margin: 20px 0;
+	margin: 20px 0;
 }
 
 .social-container a {
-  border: 1px solid #DDDDDD;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 5px;
-  height: 40px;
-  width: 40px;
+	border: 1px solid #DDDDDD;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 40px;
+	width: 40px;
 }
 
 footer {
-  background-color: #222;
-  color: #fff;
-  font-size: 14px;
-  bottom: 0;
-  position: fixed;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 999;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
 }
 
 footer p {
-  margin: 10px 0;
+    margin: 10px 0;
 }
 
 footer i {
-  color: red;
+    color: red;
 }
 
 footer a {
-  color: #3c97bf;
-  text-decoration: none;
+    color: #3c97bf;
+    text-decoration: none;
 }
 
 .center-wrapper {
@@ -281,7 +315,7 @@ footer a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f6f5f7;
+  background: #f6f5f7; /* Optional, same as body */
 }
 
 @keyframes spin-slow {
@@ -306,18 +340,18 @@ footer a {
   top: 0;
   left: 0;
   height: 100vh;
-  width: 13rem;
+  width: 13rem; /* fixed width */
   background-color: #FF4B2B;
   color: white;
   display: flex;
   flex-direction: column;
   z-index: 100;
-  padding-top: 1rem;
-  box-sizing: border-box;
+  padding-top: 1rem; /* only vertical padding */
+  box-sizing: border-box; /* ensures width stays 13rem */
 }
 
 .sidebar-top {
-  padding: 0;
+  padding: 0; /* ❌ remove horizontal padding */
 }
 
 .sidebar-logo {
@@ -331,12 +365,12 @@ footer a {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding: 0;
+  padding: 0; /* ❌ remove horizontal padding */
   overflow-y: auto;
 }
 
 .sidebar-bottom {
-  padding: 0 0 1rem 0;
+  padding: 0 0 1rem 0; /* ❌ remove horizontal padding, keep bottom */
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -347,7 +381,7 @@ footer a {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem; /* ✅ horizontal padding here only */
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
@@ -361,10 +395,10 @@ footer a {
 
 /* 🔥 Active Link Styling */
 .sidebar-link.active {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2); /* subtle black overlay */
   color: white;
-  border-left: 4px solid white;
-  padding-left: calc(1rem - 4px);
+  border-left: 4px solid white; /* optional white indicator bar */
+  padding-left: calc(1rem - 4px); /* keep text aligned after border */
 }
 
 .sidebar-link.active .sidebar-icon {
@@ -386,8 +420,8 @@ footer a {
 
 /* === Dashboard styles === */
 .dashboard-container {
-  padding: 40px 60px 60px 240px;
-  padding-top: 5rem;
+  padding: 40px 60px 60px 240px; /* left padding adjusted for sidebar */
+  padding-top: 5rem; /* For topbar spacing */
   background-color: #f5f5f5;
   min-height: 100vh;
   box-sizing: border-box;
@@ -398,7 +432,7 @@ footer a {
   font-weight: bold;
   text-align: center;
   margin-bottom: 50px;
-  color: #1f2937;
+  color: #1f2937; /* Tailwind's text-gray-800 */
 }
 
 .dashboard-grid {
@@ -441,7 +475,7 @@ footer a {
 .topbar-wrapper {
   background-color: #FF4B2B;
   height: 4rem;
-  width: calc(133% - 30rem);
+  width: calc(133% - 30rem); /* Adjust based on sidebar width */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -455,7 +489,7 @@ footer a {
 }
 
 .topbar-left-space {
-  width: 16rem;
+  width: 16rem; /* Optional for spacing balance */
 }
 
 .topbar-center {
@@ -494,82 +528,71 @@ footer a {
 }
 
 .search-input {
-  /* This search-input style is ONLY for the Topbar search input, giving it a fixed width */
   padding: 10px 12px 10px 36px;
   border-radius: 6px;
   border: none;
   background-color: white;
   font-size: 0.9rem;
-  width: 16rem; /* This topbar input has a fixed width */
+  width: 16rem;
   outline: none;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
-/* === Aircraft Detail Page Fixes === */
-/* Aircraft Detail Page Fix - Prevent global img from stretching */
-/* .aircraft-detail-page img {
-  width: auto !important;
-  height: auto !important;
-  max-width: 260px !important;
-  max-height: 180px !important;
-  object-fit: contain !important;
-  display: block;
-  margin: 0 auto;
-} */
 
-.aircraft-image {
-  max-width: 250px;
-  max-height: 160px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-  display: block;
-  margin: 0; /* ✅ stop centering */
-}
-
-.aircraft-detail-page .container {
-  all: unset;
-}
-
-/* Ensure equal width for image + info card */
-.aircraft-detail-page .grid > div {
-  flex: 1;
-}
-
-/* Fix aircraft image shape */
-.aircraft-detail-page .aircraft-image {
-  width: auto !important;
-  height: auto !important;
-  max-width: 260px !important;
-  max-height: 180px !important;
-  object-fit: contain !important;
-  display: block;
-  margin: 0 auto;
-}
-
-/* === Aircraft Detail Page Container === */
-.detail-container {
-  padding: 2rem 0.5rem 0.5rem 0.5rem;
-  background-color: #f8f8f8;
+/* DEFAULT DASHBOARD STYLING */
+.defaulltdashboard-container {
+  padding: 40px 60px 60px 240px; /* left padding adjusted for sidebar */
+  padding-top: 5rem; /* For topbar spacing */
+  background-color: #f5f5f5;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-/* === Aircraft Header Bar === */
-.aircraft-header-bar {
-  background-color: #D9D9D9;
-  padding: 0.75rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-
-  /* stretch full width across content (cancel container padding) */
-  margin: 0 -2rem 1rem -2rem;
-  width: calc(100% + 4rem);
-
-  box-sizing: border-box;
+.defaultdashboard-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
 }
+
+.defaultdashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.defaultdashboard-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.defaultdashboard-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.defaultdashboard-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.defaultdashboard-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+}
+
+.defaultdashboard-count {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2b6cb0;
+}
+
+/*ADMINISTRATION BUTTON STYLING*/
 
 .summary-cards {
   display: flex;
@@ -889,4 +912,176 @@ footer a {
 
 .cancel-btn:hover {
   background-color: #e5e7eb;
+}
+
+/* === Aircraft Detail Page Fixes === */
+/* Aircraft Detail Page Fix - Prevent global img from stretching */
+/* .aircraft-detail-page img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 260px !important;
+  max-height: 180px !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+} */
+
+.aircraft-image {
+  max-width: 250px;
+  max-height: 160px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+.aircraft-detail-page .container {
+  all: unset; /* Prevent global .container rules from breaking layout */
+}
+
+/* Ensure equal width for image + info card */
+.aircraft-detail-page .grid > div {
+  flex: 1;
+}
+
+/* Fix aircraft image shape */
+.aircraft-detail-page .aircraft-image {
+  width: auto !important;
+  height: auto !important;
+  max-width: 260px !important;
+  max-height: 180px !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* === Aircraft Detail Page Container === */
+.detail-container {
+  padding: 2rem 0.5rem 0.5rem 0.5rem;   /* ⬅ removed top padding */
+  background-color: #f8f8f8;   /* match figma light bg */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* === Aircraft Header Bar === */
+.aircraft-header-bar {
+  background-color: #D9D9D9;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  /* stretch full width across content (cancel container padding) */
+  margin: 0 -2rem 1rem -2rem;
+  width: calc(100% + 4rem);
+
+  box-sizing: border-box;
+}
+
+/*ANALYTICS STYLING*/
+.analytics-container {
+  padding: 20px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.analytics-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.analytics-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.analytics-card h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.small-card {
+  text-align: center;
+}
+
+.kpi {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #777;
+}
+/* =================================== */
+/* ===== CAMO ANALYTICS DASHBOARD STYLES ===== */
+/* =================================== */
+
+.analytics-dashboard {
+  padding: 24px;
+  font-family: sans-serif;
+  color: #333;
+  background-color: #f7fafc;
+}
+
+.analytics-dashboard .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.analytics-dashboard .stat-card,
+.analytics-dashboard .chart-container,
+.analytics-dashboard .table-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.analytics-dashboard .stat-card h3,
+.analytics-dashboard .chart-container h3,
+.analytics-dashboard .table-container h3 {
+  font-size: 16px;
+  color: #4a5568;
+  margin: 0 0 12px 0;
+}
+
+.analytics-dashboard .stat-card .value {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.analytics-dashboard .grid-col-span-2 {
+  grid-column: span 2;
+}
+
+.analytics-dashboard .grid-col-span-4 {
+  grid-column: span 4;
+}
+
+.analytics-dashboard .defects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.analytics-dashboard .defects-table th,
+.analytics-dashboard .defects-table td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid #e2e8f0;
 }
