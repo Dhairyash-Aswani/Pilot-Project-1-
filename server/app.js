@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 
 // Import the new user management routes
 const userRoutes = require('./routes/userRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 
 dotenv.config();
 connectDB();
@@ -25,5 +26,6 @@ app.use('/api/auth', require('./routes/authRoutes'));
 
 // We will use Option B below. No change here.
 app.use('/api', userRoutes); 
+app.use('/api', aiRoutes);
 
 module.exports = app;

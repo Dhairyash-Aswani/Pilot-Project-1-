@@ -8,6 +8,7 @@ import {
   FaCreditCard,
   FaChartBar,
   FaComments,
+  FaThLarge,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "../assets/style.css"; // 👈 Link to your CSS
@@ -18,7 +19,7 @@ const Dashboard = () => {
   const menuItems = [
     {
       title: "Default Dashboard",
-      icon: <FaTachometerAlt size={40} className="text-blue-500" />,
+      icon: <FaThLarge size={40} className="text-blue-500" />,
       route: "/default-dashboard",
     },
     {
@@ -39,7 +40,11 @@ const Dashboard = () => {
       icon: <FaChartBar size={40} className="text-teal-500" />,
       route: "/analytics",   // ✅ Added route
     },
-    { title: "Chat", icon: <FaComments size={40} className="text-red-500" /> },
+    {
+      title: "Chat",
+      icon: <FaComments size={40} className="text-teal-500" />,
+      route: "/ai",   // ✅ Added route
+    },
   ];
 
   const handleCardClick = (route) => {

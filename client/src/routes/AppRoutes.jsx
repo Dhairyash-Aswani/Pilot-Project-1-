@@ -1,3 +1,4 @@
+// AppRoutes.jsx
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/Login';
@@ -8,8 +9,10 @@ import MyAircraft from '../pages/MyAircraft';
 import AircraftDetails from '../pages/AircraftDetails';
 import Administration from '../pages/Administration';
 import Analytics from '../pages/Analytics';
+import AIAssistance from '../pages/AIAssistant';
 import ProtectedRoute from './ProtectedRoute';
 import Layout from '../components/Layout';
+import AIAssistant from '../pages/AIAssistant';
 
 const AppRoutes = () => {
   return (
@@ -31,7 +34,7 @@ const AppRoutes = () => {
       />
 
       <Route
-        path="/default-dashboard" // ✅ Added route
+        path="/default-dashboard"
         element={
           <ProtectedRoute>
             <Layout>
@@ -80,6 +83,17 @@ const AppRoutes = () => {
           <ProtectedRoute>
             <Layout>
               <Analytics />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/ai"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <AIAssistant />
             </Layout>
           </ProtectedRoute>
         }
