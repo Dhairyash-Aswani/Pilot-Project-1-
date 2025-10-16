@@ -9,10 +9,12 @@ import MyAircraft from '../pages/MyAircraft';
 import AircraftDetails from '../pages/AircraftDetails';
 import Administration from '../pages/Administration';
 import Analytics from '../pages/Analytics';
-import AIAssistance from '../pages/AIAssistant';
+import AIAssistant from '../pages/AIAssistant';
+import MyResources from '../pages/MyResources';
+import MyFinancials from '../pages/MyFinancials'; // 1. IMPORT the new page
+
 import ProtectedRoute from './ProtectedRoute';
 import Layout from '../components/Layout';
-import AIAssistant from '../pages/AIAssistant';
 
 const AppRoutes = () => {
   return (
@@ -99,6 +101,29 @@ const AppRoutes = () => {
         }
       />
 
+      <Route
+        path="/my-resources"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <MyResources />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* 2. ADD the new route for MyFinancials */}
+      <Route
+        path="/my-financials"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <MyFinancials />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
       {/* Catch-all */}
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
@@ -106,3 +131,4 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
+

@@ -33,17 +33,25 @@ const Dashboard = () => {
       route: "/my-aircraft",
     },
     { title: "My Materials", icon: <FaWarehouse size={40} className="text-orange-500" /> },
-    { title: "My Resources", icon: <FaUsers size={40} className="text-pink-500" /> },
-    { title: "My Financials", icon: <FaCreditCard size={40} className="text-yellow-500" /> },
+    { 
+      title: "My Resources", 
+      icon: <FaUsers size={40} className="text-pink-500" />,
+      route: "/my-resources",
+    },
+    { 
+      title: "My Financials", 
+      icon: <FaCreditCard size={40} className="text-yellow-500" />,
+      route: "/my-financials", // ✅ THIS IS THE LINE I ADDED
+    },
     {
       title: "Analytics",
       icon: <FaChartBar size={40} className="text-teal-500" />,
-      route: "/analytics",   // ✅ Added route
+      route: "/analytics",
     },
     {
       title: "Chat",
       icon: <FaComments size={40} className="text-teal-500" />,
-      route: "/ai",   // ✅ Added route
+      route: "/ai",
     },
   ];
 
@@ -72,3 +80,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
