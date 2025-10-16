@@ -10,9 +10,11 @@ import AircraftDetails from '../pages/AircraftDetails';
 import Administration from '../pages/Administration';
 import Analytics from '../pages/Analytics';
 import AIAssistance from '../pages/AIAssistant';
+import MyMaterials from '../pages/MyMaterials.jsx';
 import ProtectedRoute from './ProtectedRoute';
 import Layout from '../components/Layout';
 import AIAssistant from '../pages/AIAssistant';
+
 
 const AppRoutes = () => {
   return (
@@ -94,6 +96,17 @@ const AppRoutes = () => {
           <ProtectedRoute>
             <Layout>
               <AIAssistant />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/my-materials"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <MyMaterials />
             </Layout>
           </ProtectedRoute>
         }

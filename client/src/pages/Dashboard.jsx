@@ -32,7 +32,12 @@ const Dashboard = () => {
       icon: <FaPlane size={40} className="text-green-500" />,
       route: "/my-aircraft",
     },
-    { title: "My Materials", icon: <FaWarehouse size={40} className="text-orange-500" /> },
+    {
+      title: "My Materials",
+      icon: <FaWarehouse size={40} className="text-green-500" />,
+      route: "/my-materials",
+    },
+    
     { title: "My Resources", icon: <FaUsers size={40} className="text-pink-500" /> },
     { title: "My Financials", icon: <FaCreditCard size={40} className="text-yellow-500" /> },
     {

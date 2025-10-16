@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../assets/style.css";
 
 const MyAircraft = () => {
   const [expandedRow, setExpandedRow] = useState(null);
@@ -28,16 +29,16 @@ const MyAircraft = () => {
     { label: "Oil Uplifts Setup", icon: "🛢️" },
   ];
 
+  const firstHalf = moduleButtons.slice(0, 6);
+  const secondHalf = moduleButtons.slice(6);
+
   return (
-    <div className="pt-6 pl-6 pr-6 mt-[4rem]">
-      {/* Table */}
-      <div className="overflow-x-auto bg-white shadow rounded-lg">
-        <table className="w-full text-sm text-center text-gray-800 border-separate border-spacing-0">
-          <thead className="bg-[#FF4B2B] text-white">
+    <div className="aircraft-container">
+      <div className="aircraft-table-wrapper compact">
+        <table className="aircraft-table">
+          <thead>
             <tr>
-              <th className="px-3 py-3">
-                <input type="checkbox" />
-              </th>
+              <th><input type="checkbox" /></th>
               {[
                 "Tail Number",
                 "MSN Number",
@@ -52,23 +53,16 @@ const MyAircraft = () => {
                 "System Serviceability",
                 "Actions",
               ].map((h) => (
-                <th
-                  key={h}
-                  className="px-3 py-3 font-normal uppercase text-xs text-center"
-                >
-                  {h}
-                </th>
+                <th key={h}>{h}</th>
               ))}
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-gray-100">
-            {[...Array(10)].map((_, i) => (
+          <tbody>
+            {[...Array(5)].map((_, i) => ( // reduced rows for less scroll
               <React.Fragment key={i}>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-3 py-3">
-                    <input type="checkbox" />
-                  </td>
+                <tr className="aircraft-row">
+                  <td><input type="checkbox" /></td>
                   <td>AC-PLZ</td>
                   <td>2654</td>
                   <td>A320-214</td>
@@ -78,50 +72,45 @@ const MyAircraft = () => {
                   <td>32623</td>
                   <td>23517:00</td>
                   <td>24588</td>
-                  <td className="uppercase text-green-600 font-semibold">
-                    Serviceable
-                  </td>
-                  <td className="uppercase text-red-600 font-semibold">
-                    Unserviceable
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center gap-3 justify-end">
-                      {/* Expand/Collapse Button */}
-                      <button
-                        title="Expand"
-                        onClick={() => toggleRow(i)}
-                        className="text-gray-600 hover:text-black"
-                      >
+                  <td className="status-green">Serviceable</td>
+                  <td className="status-red">Unserviceable</td>
+                  <td>
+                    <div className="action-buttons">
+                      <button onClick={() => toggleRow(i)} className="expand-btn">
                         {expandedRow === i ? "▲" : "▼"}
                       </button>
-
-                      {/* Edit */}
-                      <button className="text-gray-600 hover:text-blue-600">
-                        ✏️
-                      </button>
-
-                      {/* Delete */}
-                      <button className="text-gray-600 hover:text-red-600">
-                        🗑️
-                      </button>
+                      <button className="edit-btn">✏️</button>
+                      <button className="delete-btn">🗑️</button>
                     </div>
                   </td>
                 </tr>
 
-                {/* Expanded Row */}
                 {expandedRow === i && (
                   <tr>
-                    <td colSpan={13} className="bg-gray-50 p-6">
-                      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                        {moduleButtons.map((btn, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => handleModuleClick(btn.route)}
-                            className="flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-3 rounded-md text-sm w-full justify-start"
-                          >
-                            <span>{btn.icon}</span> {btn.label}
-                          </button>
-                        ))}    
+                    <td colSpan={13} className="expanded-cell">
+                      <div className="module-section">
+                        <div className="module-grid">
+                          {firstHalf.map((btn, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => handleModuleClick(btn.route)}
+                              className="module-btn"
+                            >
+                              <span>{btn.icon}</span> {btn.label}
+                            </button>
+                          ))}
+                        </div>
+                        <div className="module-grid">
+                          {secondHalf.map((btn, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => handleModuleClick(btn.route)}
+                              className="module-btn"
+                            >
+                              <span>{btn.icon}</span> {btn.label}
+                            </button>
+                          ))}
+                        </div>
                       </div>
                     </td>
                   </tr>
@@ -132,19 +121,18 @@ const MyAircraft = () => {
         </table>
       </div>
 
-      {/* Pagination */}
-      <div className="flex justify-between items-center text-sm text-gray-600 mt-4">
-        <span>1–10 of 97</span>
-        <div className="flex items-center gap-2">
+      <div className="pagination">
+        <span>1–5 of 97</span>
+        <div className="pagination-controls">
           <span>Rows per page:</span>
-          <select className="border px-2 py-1 rounded text-sm">
+          <select>
+            <option>5</option>
             <option>10</option>
             <option>20</option>
-            <option>50</option>
           </select>
-          <span className="ml-4">1/10</span>
-          <button className="px-2">◀️</button>
-          <button className="px-2">▶️</button>
+          <span>1/20</span>
+          <button>◀️</button>
+          <button>▶️</button>
         </div>
       </div>
     </div>
